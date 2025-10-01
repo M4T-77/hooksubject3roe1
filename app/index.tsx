@@ -1,15 +1,23 @@
-import { Text, View } from "react-native";
+// ../ui/IconButton.tsx
+import { Pressable, StyleSheet } from "react-native";
+import { Ionicons } from "@expo/vector-icons";
+import "../global.css";
 
-export default function Index() {
+function IconButton({ iconName, color, size, presionar }) {
   return (
-    <View
-      style={{
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-      }}
+    <Pressable
+      onPress={presionar}
+      style={({ pressed }) => pressed && styles.pressed}
     >
-      <Text>Edit app/index.tsx to edit this screen.</Text>
-    </View>
+      <Ionicons name={iconName} size={size} color={color} />
+    </Pressable>
   );
 }
+
+export default IconButton;
+
+const styles = StyleSheet.create({
+  pressed: {
+    opacity: 0.5,
+  },
+});
