@@ -1,4 +1,4 @@
-import { Pressable, StyleSheet, View } from 'react-native';
+import { Pressable } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import React from 'react';
 import CustomText from './CustomText';
@@ -13,21 +13,11 @@ interface IconButtonProps {
 
 function IconButton({ iconName, color, size, presionar, title }: IconButtonProps) {
   return (
-    <Pressable
-      onPress={presionar}
-      style={({ pressed }) => pressed && styles.pressed}
-      className="flex-row items-center bg-gray-500/50 p-3 rounded-xl gap-2"
-    >
-      <Ionicons name={iconName as keyof typeof Ionicons.glyphMap} size={size} color={color} />
-      {title && <CustomText variant="title" value={title} />}
+    <Pressable onPress={presionar} className="bg-[#A69580] rounded-xl border-gray-200 p-4 flex-row items-center gap-x-2">
+      <Ionicons name = {iconName as any} size={size} color={color}/>
+      {title && <CustomText value={title} variant="normall" />}
     </Pressable>
-  );
+  )
 }
 
 export default IconButton;
-
-const styles = StyleSheet.create({
-  pressed: {
-    opacity: 0.7,
-  },
-});

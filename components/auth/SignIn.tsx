@@ -4,7 +4,7 @@ import CustomText from '../ui/CustomText'
 import CustomTextField from '../ui/CustomTextField'
 import IconButton from '../ui/IconButton'
 
-const LogIn = () => {
+const SignIn = () => {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
 
@@ -16,19 +16,20 @@ const LogIn = () => {
           className="w-48 h-48 bg-[#A69580] rounded-3xl mt-10"
           resizeMode="contain"
         />
-        <CustomText variant='title' value='Log In'/>
+        <CustomText variant='title' value='Sign In'/>
       </View>
       <View className='w-full px-5 gap-5 mt-5'>
-        <CustomText variant='title' value='Correo:'/>
+        <CustomText variant='title' value='E-Mail:'/>
         <CustomTextField title='' variant='normal' value={email} onChange={setEmail}/>
         <CustomText variant='title' value='Contraseña:'/>
         <CustomTextField title='' variant='normal' value={password} onChange={setPassword}/>
-        <View className='items-center'>
-            <IconButton iconName='log-in-outline' color='white' size={40} title="Log In"/>
+        <View className='flex-row justify-center gap-3 mb-40'>
+          <IconButton title="Regresar" iconName='arrow-back-outline' color='white' size={20}/>
+          <IconButton title="Sign In" iconName='arrow-forward-outline' color='white' size={20}/>
         </View>
       </View>
     </ScrollView>
   )
 }
 
-export default LogIn
+export default SignIn
