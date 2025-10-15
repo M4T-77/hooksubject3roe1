@@ -29,8 +29,8 @@ const index = () => {
         </TouchableOpacity>
         <TouchableOpacity
           onPress={() => {
-            Haptics.selectionAsync()
-            console.log("Google login")
+            Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium)
+            router.push("/+not-found")
           }}
           className="bg-transparent border-2 border-white rounded-full py-4 flex-row items-center justify-center gap-2"
           activeOpacity={0.8}
@@ -39,8 +39,8 @@ const index = () => {
         </TouchableOpacity>
         <TouchableOpacity
           onPress={() => {
-            Haptics.selectionAsync()
-            console.log("Facebook login")
+            Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium)
+            router.push("/+not-found")
           }}
           className="bg-[#1877F2] rounded-full py-4 flex-row items-center justify-center gap-2"
           activeOpacity={0.8}
@@ -49,8 +49,8 @@ const index = () => {
         </TouchableOpacity>
         <TouchableOpacity
           onPress={() => {
-            Haptics.selectionAsync()
-            console.log("Apple login")
+            Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium)
+            router.push("/+not-found")
           }}
           className="bg-white rounded-full py-4 flex-row items-center justify-center gap-2"
           activeOpacity={0.8}
