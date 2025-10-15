@@ -6,15 +6,15 @@ import "@/global.css";
 
 const index = () => {
   return (
-    <View className="flex-1 bg-black">
+    <View className="flex-1 bg-primary">
       <View className="items-center pt-20 pb-10">
         <Image
-          source={{ uri: "https://storage.googleapis.com/pr-newsroom-wp/1/2018/11/Spotify_Logo_RGB_Green.png" }}
-          className="w-40 h-40"
+          source={{ uri: "https://logodownload.org/wp-content/uploads/2016/09/spotify-logo-branca-white.png" }}
+          className="w-40 h-20"
           resizeMode="contain"
         />
-        <Text className="text-white text-4xl font-bold mt-6">Bienvenido</Text>
-        <Text className="text-gray-400 text-lg mt-2">Millones de canciones te esperan</Text>
+        <Text className="text-secondary text-4xl font-bold mt-6">Bienvenido</Text>
+        <Text className="text-secondary text-lg mt-2">Millones de canciones te esperan</Text>
       </View>
       <View className="flex-1 justify-center px-8 gap-4">
         <TouchableOpacity
@@ -22,17 +22,17 @@ const index = () => {
             Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium)
             router.push("/(auth)/SignUp")
           }}
-          className="bg-[#1DB954] rounded-full py-4"
+          className="bg-accent rounded-full py-4"
           activeOpacity={0.8}
         >
-          <Text className="text-center text-black font-bold text-lg">Regístrate gratis</Text>
+          <Text className="text-center text-primary font-bold text-lg">Regístrate gratis</Text>
         </TouchableOpacity>
         <TouchableOpacity
           onPress={() => {
             Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium)
             router.push("/+not-found")
           }}
-          className="bg-transparent border-2 border-white rounded-full py-4 flex-row items-center justify-center gap-2"
+          className="bg-google-blue rounded-full py-4 flex-row items-center justify-center gap-2"
           activeOpacity={0.8}
         >
           <Text className="text-white font-semibold text-base">Continuar con Google</Text>
@@ -42,7 +42,7 @@ const index = () => {
             Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium)
             router.push("/+not-found")
           }}
-          className="bg-[#1877F2] rounded-full py-4 flex-row items-center justify-center gap-2"
+          className="bg-facebook-blue rounded-full py-4 flex-row items-center justify-center gap-2"
           activeOpacity={0.8}
         >
           <Text className="text-white font-semibold text-base">Continuar con Facebook</Text>
@@ -52,10 +52,10 @@ const index = () => {
             Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium)
             router.push("/+not-found")
           }}
-          className="bg-white rounded-full py-4 flex-row items-center justify-center gap-2"
+          className="bg-apple-black rounded-full py-4 flex-row items-center justify-center gap-2"
           activeOpacity={0.8}
         >
-          <Text className="text-black font-semibold text-base">Continuar con Apple</Text>
+          <Text className="text-white font-semibold text-base">Continuar con Apple</Text>
         </TouchableOpacity>
         <TouchableOpacity
           onPress={() => {
@@ -65,15 +65,15 @@ const index = () => {
           className="mt-6"
           activeOpacity={0.7}
         >
-          <Text className="text-white font-bold text-base text-center">Iniciar sesión</Text>
+          <Text className="text-secondary font-bold text-base text-center">Iniciar sesión</Text>
         </TouchableOpacity>
       </View>
       <View className="pb-10 px-8">
-        <Text className="text-gray-500 text-xs text-center">
+        <Text className="text-secondary text-xs text-center">
           Al continuar, aceptas los{' '}
-          <Text className="underline">Términos y condiciones</Text>
+          <Text className="text-accent underline">Términos y condiciones</Text>
           {' '}y la{' '}
-          <Text className="underline">Política de privacidad</Text>
+          <Text className="text-accent underline">Política de privacidad</Text>
           {' '}de Spotify.
         </Text>
       </View>

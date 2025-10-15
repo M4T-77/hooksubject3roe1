@@ -34,11 +34,11 @@ const popularArtists = [
 
 const DashboardScreen = () => {
   return (
-    <SafeAreaView className="flex-1 bg-spotify-black">
+    <SafeAreaView className="flex-1 bg-primary">
       <ScrollView contentContainerStyle={{ paddingBottom: 20 }}>
         {/* Header */}
         <View className="px-4 pt-8">
-          <Text className="text-white text-3xl font-bold">Buenos días</Text>
+          <Text className="text-secondary text-3xl font-bold">Buenos días</Text>
         </View>
 
         {/* Recently Played */}
@@ -47,12 +47,12 @@ const DashboardScreen = () => {
             {recentlyPlayed.map(item => (
               <TouchableOpacity 
                 key={item.id}
-                className="w-[48%] bg-[#2a2a2a] rounded-md flex-row items-center mb-4"
+                className="w-[48%] bg-spotify-gray rounded-md flex-row items-center mb-4"
                 onPress={() => Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium)}
                 activeOpacity={0.7}
                 >
                 <Image source={{ uri: item.image }} className="w-16 h-16 rounded-l-md" />
-                <Text className="text-white font-semibold ml-4">{item.name}</Text>
+                <Text className="text-secondary font-semibold ml-4">{item.name}</Text>
               </TouchableOpacity>
             ))}
           </View>
@@ -60,7 +60,7 @@ const DashboardScreen = () => {
 
         {/* Heavy Rotation */}
         <View className="mt-8 px-4">
-          <Text className="text-white text-2xl font-bold mb-4">Tus álbumes más escuchados</Text>
+          <Text className="text-secondary text-2xl font-bold mb-4">Tus álbumes más escuchados</Text>
           <ScrollView horizontal showsHorizontalScrollIndicator={false}>
             {heavyRotation.map(item => (
               <TouchableOpacity 
@@ -70,15 +70,13 @@ const DashboardScreen = () => {
                 activeOpacity={0.7}
                 >
                 <Image source={{ uri: item.image }} className="w-40 h-40 rounded-md" />
-                <Text className="text-white font-semibold mt-2" numberOfLines={2}>{item.name}</Text>
+                <Text className="text-secondary font-semibold mt-2" numberOfLines={2}>{item.name}</Text>
               </TouchableOpacity>
             ))}
           </ScrollView>
         </View>
-
-        {/* New Releases */}
         <View className="mt-8 px-4">
-          <Text className="text-white text-2xl font-bold mb-4">Nuevos lanzamientos para ti</Text>
+          <Text className="text-secondary text-2xl font-bold mb-4">Nuevos lanzamientos para ti</Text>
           <ScrollView horizontal showsHorizontalScrollIndicator={false}>
             {newReleases.map(item => (
               <TouchableOpacity 
@@ -88,16 +86,14 @@ const DashboardScreen = () => {
                 activeOpacity={0.7}
               >
                 <Image source={{ uri: item.image }} className="w-40 h-40 rounded-md" />
-                <Text className="text-white font-semibold mt-2" numberOfLines={1}>{item.name}</Text>
+                <Text className="text-secondary font-semibold mt-2" numberOfLines={1}>{item.name}</Text>
                 <Text className="text-spotify-lightgray" numberOfLines={1}>{item.artist}</Text>
               </TouchableOpacity>
             ))}
           </ScrollView>
         </View>
-
-        {/* Popular Artists */}
         <View className="mt-8 px-4">
-          <Text className="text-white text-2xl font-bold mb-4">Artistas populares</Text>
+          <Text className="text-secondary text-2xl font-bold mb-4">Artistas populares</Text>
           <ScrollView horizontal showsHorizontalScrollIndicator={false}>
             {popularArtists.map(item => (
               <TouchableOpacity 
@@ -107,7 +103,7 @@ const DashboardScreen = () => {
                 activeOpacity={0.7}
               >
                 <Image source={{ uri: item.image }} className="w-40 h-40 rounded-full" />
-                <Text className="text-white font-semibold mt-2">{item.name}</Text>
+                <Text className="text-secondary font-semibold mt-2">{item.name}</Text>
               </TouchableOpacity>
             ))}
           </ScrollView>

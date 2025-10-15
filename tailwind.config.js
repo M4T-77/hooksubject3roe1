@@ -5,9 +5,14 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: '#1a202c',
-        secondary: '#f7fafc',
-        accent: '#4299e1',
+        primary: '#012E40',
+        secondary: '#F2E3D5',
+        accent: '#3CA6A6',
+        'spotify-gray': '#024959',
+        'spotify-lightgray': '#026773',
+        'google-blue': '#4285F4',
+        'facebook-blue': '#1877F2',
+        'apple-black': '#000000',
       },
     },
   },

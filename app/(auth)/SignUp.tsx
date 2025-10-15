@@ -18,96 +18,96 @@ const SignUp = () => {
   }
 
   return (
-    <ScrollView className="flex-1 bg-spotify-black">
+    <ScrollView className="flex-1 bg-primary">
       <TouchableOpacity onPress={() => router.back()} className="absolute top-16 left-4 z-10">
-        <Ionicons name="arrow-back" size={24} color="white" />
+        <Ionicons name="arrow-back" size={24} color="#F2E3D5" />
       </TouchableOpacity>
 
       <View className="items-center gap-6 px-6 pt-16">
         <Image
-          source={{ uri: "https://storage.googleapis.com/pr-newsroom-wp/1/2018/11/Spotify_Logo_RGB_Green.png" }}
-          className="w-24 h-24 mt-8"
+          source={{ uri: "https://logodownload.org/wp-content/uploads/2016/09/spotify-logo-branca-white.png" }}
+          className="w-24 h-16 mt-8"
           resizeMode="contain"
         />
         
-        <Text className="text-white text-3xl font-bold">Regístrate gratis</Text>
+        <Text className="text-secondary text-3xl font-bold">Regístrate gratis</Text>
       </View>
 
       <View className='w-full px-6 gap-4 mt-10'>
         <View>
-          <Text className="text-white text-sm font-semibold mb-2">¿Cuál es tu correo electrónico?</Text>
+          <Text className="text-secondary text-sm font-semibold mb-2">¿Cuál es tu correo electrónico?</Text>
           <TextInput 
             value={email}
             onChangeText={setEmail}
             placeholder="Ingresa tu correo electrónico"
-            placeholderTextColor="#666"
+            placeholderTextColor="#B2BEB5"
             keyboardType="email-address"
             autoCapitalize="none"
-            className="bg-[#121212] text-white border border-spotify-gray rounded-md px-4 py-3"
+            className="bg-primary text-secondary border border-secondary rounded-md px-4 py-3"
           />
         </View>
 
         <View>
-          <Text className="text-white text-sm font-semibold mb-2">Crea un nombre de usuario</Text>
+          <Text className="text-secondary text-sm font-semibold mb-2">Crea un nombre de usuario</Text>
           <TextInput 
             value={username}
             onChangeText={setUsername}
             placeholder="Ingresa un nombre de usuario"
-            placeholderTextColor="#666"
+            placeholderTextColor="#B2BEB5"
             autoCapitalize="none"
-            className="bg-[#121212] text-white border border-spotify-gray rounded-md px-4 py-3"
+            className="bg-primary text-secondary border border-secondary rounded-md px-4 py-3"
           />
         </View>
 
         <View>
-          <Text className="text-white text-sm font-semibold mb-2">Crea una contraseña</Text>
+          <Text className="text-secondary text-sm font-semibold mb-2">Crea una contraseña</Text>
           <TextInput 
             value={password}
             onChangeText={setPassword}
             placeholder="Crea una contraseña"
-            placeholderTextColor="#666"
+            placeholderTextColor="#B2BEB5"
             secureTextEntry
-            className="bg-[#121212] text-white border border-spotify-gray rounded-md px-4 py-3"
+            className="bg-primary text-secondary border border-secondary rounded-md px-4 py-3"
           />
         </View>
 
         <View>
-          <Text className="text-white text-sm font-semibold mb-2">Confirma tu contraseña</Text>
+          <Text className="text-secondary text-sm font-semibold mb-2">Confirma tu contraseña</Text>
           <TextInput 
             value={confirmPassword}
             onChangeText={setConfirmPassword}
             placeholder="Confirma tu contraseña"
-            placeholderTextColor="#666"
+            placeholderTextColor="#B2BEB5"
             secureTextEntry
-            className="bg-[#121212] text-white border border-spotify-gray rounded-md px-4 py-3"
+            className="bg-primary text-secondary border border-secondary rounded-md px-4 py-3"
           />
         </View>
 
         <View className="mt-4">
-          <Text className="text-spotify-lightgray text-xs text-center">
+          <Text className="text-secondary text-xs text-center">
             Al hacer clic en "Regístrate", aceptas los{' '}
-            <Text className="text-spotify-green underline">Términos y condiciones de uso</Text>
+            <Text className="text-accent underline">Términos y condiciones de uso</Text>
             {' '}de Spotify.
           </Text>
-          <Text className="text-spotify-lightgray text-xs text-center mt-2">
+          <Text className="text-secondary text-xs text-center mt-2">
             Para obtener más información sobre cómo Spotify recopila, utiliza, comparte y protege tus datos personales, consulta la{' '}
-            <Text className="text-spotify-green underline">Política de privacidad</Text>
+            <Text className="text-accent underline">Política de privacidad</Text>
             {' '}de Spotify.
           </Text>
         </View>
 
         <TouchableOpacity
           onPress={handleSignUp}
-          className="bg-spotify-green rounded-full py-4 mt-6"
+          className="bg-accent rounded-full py-4 mt-6"
           activeOpacity={0.8}
         >
-          <Text className="text-center text-spotify-black font-bold text-lg">Registrarte</Text>
+          <Text className="text-center text-primary font-bold text-lg">Registrarte</Text>
         </TouchableOpacity>
 
         <View className="flex-row items-center my-8">
-          <View className="flex-1 h-[1px] bg-spotify-gray" />
-          <Text className="mx-4 text-spotify-lightgray">o</Text>
-          <View className="flex-1 h-[1px] bg-spotify-gray" />
+          <View className="flex-1 h-[1px] bg-secondary" />
+          <Text className="mx-4 text-secondary">o</Text>
+          <View className="flex-1 h-[1px] bg-secondary" />
         </View>
 
         <TouchableOpacity
@@ -115,7 +115,7 @@ const SignUp = () => {
             Haptics.selectionAsync()
             console.log("Google sign up")
           }}
-          className="bg-transparent border-2 border-spotify-gray rounded-full py-3 flex-row items-center justify-center"
+          className="bg-google-blue rounded-full py-3 flex-row items-center justify-center"
           activeOpacity={0.8}
         >
           <Text className="text-white font-semibold">Registrarte con Google</Text>
@@ -126,14 +126,14 @@ const SignUp = () => {
             Haptics.selectionAsync()
             console.log("Facebook sign up")
           }}
-          className="bg-transparent border-2 border-spotify-gray rounded-full py-3 flex-row items-center justify-center"
+          className="bg-facebook-blue rounded-full py-3 flex-row items-center justify-center"
           activeOpacity={0.8}
         >
           <Text className="text-white font-semibold">Registrarte con Facebook</Text>
         </TouchableOpacity>
 
         <View className="flex-row justify-center items-center gap-2 pb-20 mt-8">
-          <Text className="text-spotify-lightgray">¿Ya tienes cuenta?</Text>
+          <Text className="text-secondary">¿Ya tienes cuenta?</Text>
           <TouchableOpacity
             onPress={() => {
               Haptics.selectionAsync()
@@ -141,7 +141,7 @@ const SignUp = () => {
             }}
             activeOpacity={0.7}
           >
-            <Text className="text-white underline font-semibold">Inicia sesión aquí</Text>
+            <Text className="text-accent underline font-semibold">Inicia sesión aquí</Text>
           </TouchableOpacity>
         </View>
       </View>

@@ -18,37 +18,37 @@ const SignIn = () => {
   return (
     <ScrollView className="flex-1 bg-primary">
       <TouchableOpacity onPress={() => router.back()} className="absolute top-16 left-4 z-10">
-        <Ionicons name="arrow-back" size={24} color="#f7fafc" />
+        <Ionicons name="arrow-back" size={24} color="#F2E3D5" />
       </TouchableOpacity>
 
       <View className="items-center gap-6 px-6 pt-16">
         <Image
-          source={{ uri: "https://storage.googleapis.com/pr-newsroom-wp/1/2018/11/Spotify_Logo_RGB_Green.png" }}
-          className="w-32 h-32 mt-8"
+          source={{ uri: "https://logodownload.org/wp-content/uploads/2016/09/spotify-logo-branca-white.png" }}
+          className="w-32 h-20 mt-8"
           resizeMode="contain"
         />
         
-        <Text className="text-secondary text-3xl font-bold">Login to Your Account</Text>
+        <Text className="text-secondary text-3xl font-bold">Inicia sesión en tu cuenta</Text>
       </View>
 
       <View className='w-full px-6 gap-4 mt-10'>
         <View>
-          <Text className="text-secondary text-sm font-semibold mb-2">Email</Text>
+          <Text className="text-secondary text-sm font-semibold mb-2">Correo electrónico</Text>
           <TextInput 
             value={email}
             onChangeText={setEmail}
-            placeholder="Enter your email"
-            placeholderTextColor="#a0aec0"
+            placeholder="Ingresa tu correo electrónico"
+            placeholderTextColor="#B2BEB5"
             className="bg-primary text-secondary border border-secondary rounded-md px-4 py-3"
           />
         </View>
         <View>
-          <Text className="text-secondary text-sm font-semibold mb-2">Password</Text>
+          <Text className="text-secondary text-sm font-semibold mb-2">Contraseña</Text>
           <TextInput 
             value={password}
             onChangeText={setPassword}
-            placeholder="Enter your password"
-            placeholderTextColor="#a0aec0"
+            placeholder="Ingresa tu contraseña"
+            placeholderTextColor="#B2BEB5"
             secureTextEntry
             className="bg-primary text-secondary border border-secondary rounded-md px-4 py-3"
           />
@@ -58,7 +58,7 @@ const SignIn = () => {
           className="bg-accent rounded-full py-4 mt-6"
           activeOpacity={0.8}
         >
-          <Text className="text-center text-primary font-bold text-lg">Sign In</Text>
+          <Text className="text-center text-primary font-bold text-lg">Iniciar sesión</Text>
         </TouchableOpacity>
         <TouchableOpacity
           onPress={() => {
@@ -68,47 +68,47 @@ const SignIn = () => {
           activeOpacity={0.7}
           className="items-center mt-4"
         >
-          <Text className="text-secondary underline text-sm">Forgot Password?</Text>
+          <Text className="text-secondary underline text-sm">¿Olvidaste tu contraseña?</Text>
         </TouchableOpacity>
         <View className="flex-row items-center my-8">
           <View className="flex-1 h-[1px] bg-secondary" />
-          <Text className="mx-4 text-secondary">or</Text>
+          <Text className="mx-4 text-secondary">o</Text>
           <View className="flex-1 h-[1px] bg-secondary" />
         </View>
         <TouchableOpacity
           onPress={() => {
-            Haptics.selectionAsync()
-            console.log("Google login")
+            Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium)
+            router.push("/+not-found")
           }}
-          className="bg-transparent border-2 border-secondary rounded-full py-3 flex-row items-center justify-center"
+          className="bg-google-blue rounded-full py-3 flex-row items-center justify-center"
           activeOpacity={0.8}
         >
-          <Text className="text-secondary font-semibold">Continue with Google</Text>
+          <Text className="text-white font-semibold">Continuar con Google</Text>
         </TouchableOpacity>
 
         <TouchableOpacity
           onPress={() => {
-            Haptics.selectionAsync()
-            console.log("Facebook login")
+            Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium)
+            router.push("/+not-found")
           }}
-          className="bg-transparent border-2 border-secondary rounded-full py-3 flex-row items-center justify-center"
+          className="bg-facebook-blue rounded-full py-3 flex-row items-center justify-center"
           activeOpacity={0.8}
         >
-          <Text className="text-secondary font-semibold">Continue with Facebook</Text>
+          <Text className="text-white font-semibold">Continuar con Facebook</Text>
         </TouchableOpacity>
 
         <TouchableOpacity
           onPress={() => {
-            Haptics.selectionAsync()
-            console.log("Apple login")
+            Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium)
+            router.push("/+not-found")
           }}
-          className="bg-transparent border-2 border-secondary rounded-full py-3 flex-row items-center justify-center mb-8"
+          className="bg-apple-black rounded-full py-3 flex-row items-center justify-center mb-8"
           activeOpacity={0.8}
         >
-          <Text className="text-secondary font-semibold">Continue with Apple</Text>
+          <Text className="text-white font-semibold">Continuar con Apple</Text>
         </TouchableOpacity>
         <View className="flex-row justify-center items-center gap-2 pb-20">
-          <Text className="text-secondary">Don't have an account?</Text>
+          <Text className="text-secondary">¿No tienes una cuenta?</Text>
           <TouchableOpacity
             onPress={() => {
               Haptics.selectionAsync()
@@ -116,7 +116,7 @@ const SignIn = () => {
             }}
             activeOpacity={0.7}
           >
-            <Text className="text-accent underline font-semibold">Sign Up</Text>
+            <Text className="text-accent underline font-semibold">Regístrate</Text>
           </TouchableOpacity>
         </View>
       </View>
