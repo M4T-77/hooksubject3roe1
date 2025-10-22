@@ -27,6 +27,24 @@ export default function MainLayout() {
           ),
         }}
       />
+      <Tabs.Screen
+        name="NowPlayingScreen"
+        options={{
+          tabBarLabel: 'Now Playing',
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="musical-note" color={color} size={size} />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="SettingsScreen"
+        options={{
+          tabBarLabel: 'Settings',
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="settings" color={color} size={size} />
+          ),
+        }}
+      />
     </Tabs>
   );
 }

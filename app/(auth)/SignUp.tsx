@@ -1,19 +1,30 @@
-import { View, Image, ScrollView, TouchableOpacity, TextInput, Text } from 'react-native'
-import React, { useState } from 'react'
-import * as Haptics from 'expo-haptics'
+import { View, Image, ScrollView, TouchableOpacity, Text } from 'react-native'
+import React from 'react'
 import { useRouter } from 'expo-router'
 import { Ionicons } from '@expo/vector-icons'
+import { z } from 'zod'
+import { Controller, useForm } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { SignUpSchema } from '../../lib/validation'
+import CustomTextField from '../../components/ui/CustomTextField'
+import EmailInput from '../../lib/components/EmailInput'
 
 const SignUp = () => {
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
-  const [confirmPassword, setConfirmPassword] = useState("")
-  const [username, setUsername] = useState("")
   const router = useRouter()
+  const { control, handleSubmit, formState: { errors }, setValue } = useForm({
+    resolver: zodResolver(SignUpSchema),
+    defaultValues: {
+      email: "",
+      username: "",
+      password: "",
+      confirmPassword: "",
+    }
+  });
 
-  const handleSignUp = () => {
-    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium)
-    console.log("Sign Up", { email, password, confirmPassword, username })
+  // This function is called when the user submits the form
+  const onSubmit = (data: z.infer<typeof SignUpSchema>) => {
+    // The data is valid, so we can log it and navigate to the dashboard
+    console.log("Sign Up", data)
     router.replace('/(main)/DashboardScreen')
   }
 
@@ -34,54 +45,62 @@ const SignUp = () => {
       </View>
 
       <View className='w-full px-6 gap-4 mt-10'>
-        <View>
-          <Text className="text-secondary text-sm font-semibold mb-2">¿Cuál es tu correo electrónico?</Text>
-          <TextInput 
-            value={email}
-            onChangeText={setEmail}
-            placeholder="Ingresa tu correo electrónico"
-            placeholderTextColor="#B2BEB5"
-            keyboardType="email-address"
-            autoCapitalize="none"
-            className="bg-primary text-secondary border border-secondary rounded-md px-4 py-3"
-          />
-        </View>
+        <EmailInput
+          name="email"
+          label="¿Cuál es tu correo electrónico?"
+          placeholder="Ingresa tu correo electrónico"
+          onValueChange={(value, isValid) => {
+            setValue("email", value, { shouldValidate: true });
+          }}
+        />
 
-        <View>
-          <Text className="text-secondary text-sm font-semibold mb-2">Crea un nombre de usuario</Text>
-          <TextInput 
-            value={username}
-            onChangeText={setUsername}
-            placeholder="Ingresa un nombre de usuario"
-            placeholderTextColor="#B2BEB5"
-            autoCapitalize="none"
-            className="bg-primary text-secondary border border-secondary rounded-md px-4 py-3"
-          />
-        </View>
+        <Controller
+          control={control}
+          name="username"
+          render={({ field: { onChange, onBlur, value } }) => (
+            <CustomTextField
+              title="Crea un nombre de usuario"
+              value={value}
+              onChange={onChange}
+              onBlur={onBlur}
+              placeholder="Ingresa un nombre de usuario"
+              autoCapitalize="none"
+              error={errors.username?.message}
+            />
+          )}
+        />
 
-        <View>
-          <Text className="text-secondary text-sm font-semibold mb-2">Crea una contraseña</Text>
-          <TextInput 
-            value={password}
-            onChangeText={setPassword}
-            placeholder="Crea una contraseña"
-            placeholderTextColor="#B2BEB5"
-            secureTextEntry
-            className="bg-primary text-secondary border border-secondary rounded-md px-4 py-3"
-          />
-        </View>
+        <Controller
+          control={control}
+          name="password"
+          render={({ field: { onChange, onBlur, value } }) => (
+            <CustomTextField
+              title="Crea una contraseña"
+              value={value}
+              onChange={onChange}
+              onBlur={onBlur}
+              placeholder="Crea una contraseña"
+              secureTextEntry
+              error={errors.password?.message}
+            />
+          )}
+        />
 
-        <View>
-          <Text className="text-secondary text-sm font-semibold mb-2">Confirma tu contraseña</Text>
-          <TextInput 
-            value={confirmPassword}
-            onChangeText={setConfirmPassword}
-            placeholder="Confirma tu contraseña"
-            placeholderTextColor="#B2BEB5"
-            secureTextEntry
-            className="bg-primary text-secondary border border-secondary rounded-md px-4 py-3"
-          />
-        </View>
+        <Controller
+          control={control}
+          name="confirmPassword"
+          render={({ field: { onChange, onBlur, value } }) => (
+            <CustomTextField
+              title="Confirma tu contraseña"
+              value={value}
+              onChange={onChange}
+              onBlur={onBlur}
+              placeholder="Confirma tu contraseña"
+              secureTextEntry
+              error={errors.confirmPassword?.message}
+            />
+          )}
+        />
 
         <View className="mt-4">
           <Text className="text-secondary text-xs text-center">
@@ -97,7 +116,7 @@ const SignUp = () => {
         </View>
 
         <TouchableOpacity
-          onPress={handleSignUp}
+          onPress={handleSubmit(onSubmit)}
           className="bg-accent rounded-full py-4 mt-6"
           activeOpacity={0.8}
         >
@@ -112,7 +131,6 @@ const SignUp = () => {
 
         <TouchableOpacity
           onPress={() => {
-            Haptics.selectionAsync()
             console.log("Google sign up")
           }}
           className="bg-google-blue rounded-full py-3 flex-row items-center justify-center"
@@ -123,7 +141,6 @@ const SignUp = () => {
 
         <TouchableOpacity
           onPress={() => {
-            Haptics.selectionAsync()
             console.log("Facebook sign up")
           }}
           className="bg-facebook-blue rounded-full py-3 flex-row items-center justify-center"
@@ -136,7 +153,6 @@ const SignUp = () => {
           <Text className="text-secondary">¿Ya tienes cuenta?</Text>
           <TouchableOpacity
             onPress={() => {
-              Haptics.selectionAsync()
               router.push('/(auth)/SignIn')
             }}
             activeOpacity={0.7}

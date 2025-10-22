@@ -41,7 +41,6 @@ const DashboardScreen = () => {
           <Text className="text-secondary text-3xl font-bold">Buenos días</Text>
         </View>
 
-        {/* Recently Played */}
         <View className="mt-8">
           <View className="flex-row flex-wrap justify-between px-4">
             {recentlyPlayed.map(item => (
@@ -58,7 +57,6 @@ const DashboardScreen = () => {
           </View>
         </View>
 
-        {/* Heavy Rotation */}
         <View className="mt-8 px-4">
           <Text className="text-secondary text-2xl font-bold mb-4">Tus álbumes más escuchados</Text>
           <ScrollView horizontal showsHorizontalScrollIndicator={false}>

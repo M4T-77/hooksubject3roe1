@@ -1,17 +1,28 @@
-import { View, Image, ScrollView, TouchableOpacity, TextInput, Text } from 'react-native'
-import React, { useState } from 'react'
-import * as Haptics from 'expo-haptics'
+import { View, Image, ScrollView, TouchableOpacity, Text } from 'react-native'
+import React from 'react'
 import { useRouter } from 'expo-router'
 import { Ionicons } from '@expo/vector-icons'
+import { z } from 'zod'
+import { Controller, useForm } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { SignInSchema } from '../../lib/validation'
+import CustomTextField from '../../components/ui/CustomTextField'
+import EmailInput from '../../lib/components/EmailInput'
 
 const SignIn = () => {
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
   const router = useRouter()
+  const { control, handleSubmit, formState: { errors }, setValue } = useForm({
+    resolver: zodResolver(SignInSchema),
+    defaultValues: {
+      email: "",
+      password: "",
+    }
+  });
 
-  const handleSignIn = () => {
-    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium)
-    console.log("Sign In", { email, password })
+  // This function is called when the user submits the form
+  const onSubmit = (data: z.infer<typeof SignInSchema>) => {
+    // The data is valid, so we can log it and navigate to the dashboard
+    console.log("Sign In", data)
     router.replace('/(main)/DashboardScreen')
   }
 
@@ -32,29 +43,33 @@ const SignIn = () => {
       </View>
 
       <View className='w-full px-6 gap-4 mt-10'>
-        <View>
-          <Text className="text-secondary text-sm font-semibold mb-2">Correo electrónico</Text>
-          <TextInput 
-            value={email}
-            onChangeText={setEmail}
-            placeholder="Ingresa tu correo electrónico"
-            placeholderTextColor="#B2BEB5"
-            className="bg-primary text-secondary border border-secondary rounded-md px-4 py-3"
-          />
-        </View>
-        <View>
-          <Text className="text-secondary text-sm font-semibold mb-2">Contraseña</Text>
-          <TextInput 
-            value={password}
-            onChangeText={setPassword}
-            placeholder="Ingresa tu contraseña"
-            placeholderTextColor="#B2BEB5"
-            secureTextEntry
-            className="bg-primary text-secondary border border-secondary rounded-md px-4 py-3"
-          />
-        </View>
+        <EmailInput
+          name="email"
+          label="Correo electrónico"
+          placeholder="Ingresa tu correo electrónico"
+          onValueChange={(value, isValid) => {
+            setValue("email", value, { shouldValidate: true });
+          }}
+        />
+
+        <Controller
+          control={control}
+          name="password"
+          render={({ field: { onChange, onBlur, value } }) => (
+            <CustomTextField
+              title="Contraseña"
+              value={value}
+              onChange={onChange}
+              onBlur={onBlur}
+              placeholder="Ingresa tu contraseña"
+              secureTextEntry
+              error={errors.password?.message}
+            />
+          )}
+        />
+
         <TouchableOpacity
-          onPress={handleSignIn}
+          onPress={handleSubmit(onSubmit)}
           className="bg-accent rounded-full py-4 mt-6"
           activeOpacity={0.8}
         >
@@ -62,7 +77,6 @@ const SignIn = () => {
         </TouchableOpacity>
         <TouchableOpacity
           onPress={() => {
-            Haptics.selectionAsync()
             console.log("Forgot password")
           }}
           activeOpacity={0.7}
@@ -70,14 +84,15 @@ const SignIn = () => {
         >
           <Text className="text-secondary underline text-sm">¿Olvidaste tu contraseña?</Text>
         </TouchableOpacity>
+
         <View className="flex-row items-center my-8">
           <View className="flex-1 h-[1px] bg-secondary" />
           <Text className="mx-4 text-secondary">o</Text>
           <View className="flex-1 h-[1px] bg-secondary" />
         </View>
+
         <TouchableOpacity
           onPress={() => {
-            Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium)
             router.push("/+not-found")
           }}
           className="bg-google-blue rounded-full py-3 flex-row items-center justify-center"
@@ -88,7 +103,6 @@ const SignIn = () => {
 
         <TouchableOpacity
           onPress={() => {
-            Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium)
             router.push("/+not-found")
           }}
           className="bg-facebook-blue rounded-full py-3 flex-row items-center justify-center"
@@ -99,7 +113,6 @@ const SignIn = () => {
 
         <TouchableOpacity
           onPress={() => {
-            Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium)
             router.push("/+not-found")
           }}
           className="bg-apple-black rounded-full py-3 flex-row items-center justify-center mb-8"
@@ -107,11 +120,11 @@ const SignIn = () => {
         >
           <Text className="text-white font-semibold">Continuar con Apple</Text>
         </TouchableOpacity>
+
         <View className="flex-row justify-center items-center gap-2 pb-20">
           <Text className="text-secondary">¿No tienes una cuenta?</Text>
           <TouchableOpacity
             onPress={() => {
-              Haptics.selectionAsync()
               router.push('/(auth)/SignUp')
             }}
             activeOpacity={0.7}

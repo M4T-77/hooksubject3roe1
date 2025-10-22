@@ -15,7 +15,7 @@ function IconButton({ iconName, color, size, presionar, title }: IconButtonProps
   return (
     <Pressable onPress={presionar} className="bg-[#A69580] rounded-xl border-gray-200 p-4 flex-row items-center gap-x-2">
       <Ionicons name = {iconName as any} size={size} color={color}/>
-      {title && <CustomText value={title} variant="normall" />}
+      {title && <CustomText value={title} variant="titleSecondary" />}
     </Pressable>
   )
 }
