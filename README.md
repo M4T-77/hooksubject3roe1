@@ -1,5 +1,5 @@
 > Edited for use in IDX on 07/09/12
-
+![gif](https://github.com/user-attachments/assets/b76d7edb-a473-4820-be61-58c6dae0aaca)
 # Welcome to your Expo app 👋
 
 This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
